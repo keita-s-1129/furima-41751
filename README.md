@@ -1,24 +1,49 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# テーブル設計 - FurimaのER図 -
 
-Things you may want to cover:
+## users テーブル
 
-* Ruby version
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| nickname           | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| first_name         | string | null: false               |
+| last_name          | string | null: false               |
+| first_kana         | string | null: false               |
+| last_kana          | string | null: false               |
+| birthday           | date   | null: false               |
 
-* System dependencies
 
-* Configuration
+## items テーブル
 
-* Database creation
+| Column          | Type       | Options                         |
+| --------------- | ---------- | ------------------------------- |
+| user            | references | null: false, foreign_key: true  |
+| title           | string     | null: false                     |
+| description     | text       | null: false                     |
+| category        | integer    | null: false                     |
+| description     | integer    | null: false                     |
+| condition       | integer    | null: false                     |
+| delivery_price  | integer    | null: false                     |
+| delivery_area   | integer    | null: false                     |
+| delivery_day    | integer    | null: false                     |
 
-* Database initialization
 
-* How to run the test suite
+## orders テーブル
 
-* Services (job queues, cache servers, search engines, etc.)
+| Column          | Type       | Options                         |
+| --------------- | ---------- | ------------------------------- |
+| user            | references | null: false, foreign_key: true  |
+| card_number     | string     | null: false                     |
+| card_expiry     | string     | null: false                     |
+| card_cvv        | string     | null: false                     |
+| post_code       | string     | null: false                     |
+| prefecture      | string     | null: false                     |
+| municipalities  | string     | null: false                     |
+| address         | string     | null: false                     |
+| building_name   | string     | null: false                     |
+| phone_number    | string     | null: false                     |
 
-* Deployment instructions
 
-* ...
