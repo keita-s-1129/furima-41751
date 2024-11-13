@@ -15,6 +15,10 @@
 | last_kana          | string | null: false               |
 | birthday           | date   | null: false               |
 
+### Association
+- has_many :items
+- has_many :orders
+
 
 ## items テーブル
 
@@ -29,6 +33,10 @@
 | delivery_price  | integer    | null: false                     |
 | delivery_area   | integer    | null: false                     |
 | delivery_day    | integer    | null: false                     |
+
+### Association
+- belongs_to :user
+- has_one :orders
 
 
 ## orders テーブル
@@ -46,4 +54,6 @@
 | building_name   | string     | null: false                     |
 | phone_number    | string     | null: false                     |
 
-
+### Association
+- belongs_to :user
+- has_one :items
