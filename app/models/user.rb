@@ -3,10 +3,18 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
+  NAME_REGEX = /\A[ぁ-んァ-ヶ一-龥々ー]+\z/
+  KANA_REGEX = /\A[ァ-ヶー]+\z/
+
   validates :nickname, presence: true
-  validates :first_name, presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ }
-  validates :last_name, presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ }
-  validates :first_kana, presence: true, format: { with: /\A[ァ-ヶー]+\z/ }
-  validates :last_kana, presence: true, format: { with: /\A[ァ-ヶー]+\z/ }
+  validates :password, format: { with: PASSWORD_REGEX, message: 'is invalid. Include both letters and numbers' }
+  validates :first_name, presence: true, format: { with: NAME_REGEX, message: 'is invalid. Input full-width characters' }
+  validates :last_name, presence: true, format: { with: NAME_REGEX, message: 'is invalid. Input full-width characters' }
+  validates :first_kana, presence: true,
+                         format: { with: KANA_REGEX, message: 'is invalid. Input full-width katakana characters' }
+  validates :last_kana, presence: true,
+                        format: { with: KANA_REGEX, message: 'is invalid. Input full-width katakana characters' }
   validates :birthday, presence: true
 end
