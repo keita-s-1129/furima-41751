@@ -2,3 +2,5 @@
 
 require_relative "../config/application"
 require "importmap/commands"
+
+pin "items_new", to: "items_new.js"
