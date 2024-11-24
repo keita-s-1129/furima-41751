@@ -1,3 +1,0 @@
-class Purchese < ApplicationRecord
-  
-end
