@@ -93,3 +93,5 @@ gem 'payjp'
 
 gem 'pry'
 gem 'pry-byebug'
+
+gem 'gon'

@@ -1,8 +1,10 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :item_set, only: [:index, :create]
+  before_action :sold_out_item, only: [:index, :create, :show]
 
   def index
+    gon.public_key = ENV['PAYJP_PUBLIC_KEY']
     @order_form = OrderForm.new
   end
 
@@ -17,6 +19,7 @@ class OrdersController < ApplicationController
       @order_form.save(params[:item_id], current_user.id)
       redirect_to root_path
     else
+      gon.public_key = ENV['PAYJP_PUBLIC_KEY']
       render :index, status: :unprocessable_entity
     end
   end
@@ -33,11 +36,17 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = 'sk_test_7872f0364472cc0d4b586d15' # 自身のPAY.JPテスト秘密鍵
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY'] # 自身のPAY.JPテスト秘密鍵（環境変数化）
     Payjp::Charge.create(
       amount: @item.price,             # 商品の値段
       card: order_form_params[:token], # カードトークン
       currency: 'jpy'                  # 通貨の種類（日本円）
     )
+  end
+
+  def sold_out_item
+    return unless @item.user_id == current_user.id || !@item.order.nil?
+
+    redirect_to root_path
   end
 end
