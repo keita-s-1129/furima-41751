@@ -4,10 +4,8 @@ FactoryBot.define do
     prefecture_id   { 2 }
     city            { Faker::Address.city }
     address         { Faker::Address.street_address }
+    building_name   { 'ハイツ101号室' }
     phone_number    { Faker::Number.leading_zero_number(digits: 11) }
     token           { 'tok_abcdefghijk00000000000000000' }
-
-    association :user_id
-    association :item_id
   end
 end
