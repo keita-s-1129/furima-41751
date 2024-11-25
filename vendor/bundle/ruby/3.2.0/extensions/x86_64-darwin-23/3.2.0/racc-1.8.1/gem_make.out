@@ -1,0 +1,19 @@
+current directory: /Users/zim-kuts/projects/furima-41751/vendor/bundle/ruby/3.2.0/gems/racc-1.8.1/ext/racc/cparse
+/Users/zim-kuts/.rbenv/versions/3.2.0/bin/ruby -I /Users/zim-kuts/.rbenv/versions/3.2.0/lib/ruby/3.2.0 extconf.rb
+creating Makefile
+
+current directory: /Users/zim-kuts/projects/furima-41751/vendor/bundle/ruby/3.2.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20241125-29938-fre62j sitelibdir\=./.gem.20241125-29938-fre62j clean
+
+current directory: /Users/zim-kuts/projects/furima-41751/vendor/bundle/ruby/3.2.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20241125-29938-fre62j sitelibdir\=./.gem.20241125-29938-fre62j
+compiling cparse.c
+linking shared-object racc/cparse.bundle
+ld: warning: ignoring duplicate libraries: '-lruby.3.2'
+
+current directory: /Users/zim-kuts/projects/furima-41751/vendor/bundle/ruby/3.2.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20241125-29938-fre62j sitelibdir\=./.gem.20241125-29938-fre62j install
+/usr/bin/install -c -m 0755 cparse.bundle ./.gem.20241125-29938-fre62j/racc
+
+current directory: /Users/zim-kuts/projects/furima-41751/vendor/bundle/ruby/3.2.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20241125-29938-fre62j sitelibdir\=./.gem.20241125-29938-fre62j clean
