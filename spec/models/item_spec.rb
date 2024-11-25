@@ -4,7 +4,6 @@ RSpec.describe Item, type: :model do
   before do
     @item = FactoryBot.build(:item)
   end
-
   describe '商品出品' do
     context '商品出品できるとき' do
       it 'nameとdescriptionとprice（300から9999999）と画像が存在、category_id、condition_id、shipping_fee_id、prefecture_idが2以上が選択されているとき' do
